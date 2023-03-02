@@ -4,6 +4,7 @@ type regionInformation = {
   salesforceName: string;
   label: string;
   approvers: approvers;
+  override: boolean;
 };
 
 type file = regionInformation[];

@@ -13,8 +13,10 @@ outputs:
     description: 'The region label to be assigned to the issue'
   githubHandlesOfPeopleToBeNotified:
     description: 'The GitHub handles who should be notified'
+  override:
+    description: 'Wether the ASE approval can be overriden'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 branding:
   icon: 'target'  

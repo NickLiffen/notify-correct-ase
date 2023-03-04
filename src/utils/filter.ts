@@ -8,7 +8,8 @@ export const filter = async (
     const approvers = arr.approvers.join(", ");
     const label = arr.label;
     const override = `${arr.override}`;
-    return [approvers, label, override];
+    const [singleASE] = arr.approvers;
+    return [approvers, label, override, singleASE];
   }
 
   throw new Error(

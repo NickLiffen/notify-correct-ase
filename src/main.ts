@@ -23,7 +23,7 @@ const run = async (): Promise<void> => {
       doc
     );
 
-    const [approvers, label, override] = await filter(region, doc);
+    const [approvers, label, override, singleASE] = await filter(region, doc);
 
     console.log(
       `The following people will get notified to approve the issue: ${approvers}`
@@ -33,6 +33,7 @@ const run = async (): Promise<void> => {
     core.setOutput("labelOfRegionToAssignToIssue", label);
     core.setOutput("githubHandlesOfPeopleToBeNotified", approvers);
     core.setOutput("override", override);
+    core.setOutput("singleASE", singleASE);
   } catch (e) {
     console.log(e);
     throw e;

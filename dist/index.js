@@ -6838,12 +6838,13 @@ const run = async () => {
             json: true,
         });
         console.log(`We are checking the region: ${region} against the following dataset: `, doc);
-        const [approvers, label, override] = await (0, utils_1.filter)(region, doc);
+        const [approvers, label, override, singleASE] = await (0, utils_1.filter)(region, doc);
         console.log(`The following people will get notified to approve the issue: ${approvers}`);
         console.log(`The following label will be applied to the issue: ${label}`);
         core.setOutput("labelOfRegionToAssignToIssue", label);
         core.setOutput("githubHandlesOfPeopleToBeNotified", approvers);
         core.setOutput("override", override);
+        core.setOutput("singleASE", singleASE);
     }
     catch (e) {
         console.log(e);
@@ -6868,7 +6869,8 @@ const filter = async (region, file) => {
         const approvers = arr.approvers.join(", ");
         const label = arr.label;
         const override = `${arr.override}`;
-        return [approvers, label, override];
+        const [singleASE] = arr.approvers;
+        return [approvers, label, override, singleASE];
     }
     throw new Error(`The region sent from Salesforce did not match a local record. The value from salesforce was: ${region}`);
 };

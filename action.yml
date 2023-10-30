@@ -18,7 +18,7 @@ outputs:
   singleASE:
     description: 'The GitHub handle of the first ASE in the list'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 branding:
   icon: 'target'  

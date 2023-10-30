@@ -8,7 +8,7 @@ import * as core from "@actions/core";
 const run = async (): Promise<void> => {
   try {
     const { region } = JSON.parse(
-      core.getInput("issueBody", { required: false })
+      core.getInput("issueBody", { required: false }),
     ) as IssueBodyTemplate;
 
     console.log(`We found the following region in the issue: ${region}`);
@@ -20,13 +20,13 @@ const run = async (): Promise<void> => {
 
     console.log(
       `We are checking the region: ${region} against the following dataset: `,
-      doc
+      doc,
     );
 
     const [approvers, label, override, singleASE] = await filter(region, doc);
 
     console.log(
-      `The following people will get notified to approve the issue: ${approvers}`
+      `The following people will get notified to approve the issue: ${approvers}`,
     );
     console.log(`The following label will be applied to the issue: ${label}`);
 

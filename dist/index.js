@@ -558,7 +558,7 @@ class OidcClient {
                 .catch(error => {
                 throw new Error(`Failed to get ID Token. \n 
         Error Code : ${error.statusCode}\n 
-        Error Message: ${error.result.message}`);
+        Error Message: ${error.message}`);
             });
             const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
             if (!id_token) {
@@ -6870,7 +6870,7 @@ const filter = async (region, file) => {
         const label = arr.label;
         const override = `${arr.override}`;
         const [singleASE] = arr.approvers;
-        return [approvers, label, override, singleASE];
+        return [approvers, label, override, singleASE.replace("@", '')];
     }
     throw new Error(`The region sent from Salesforce did not match a local record. The value from salesforce was: ${region}`);
 };

@@ -12,13 +12,27 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
-      - name: Test to see if it works
-        id: test
+      - name: Test to see if it works (central)
+        id: test-central
         uses: ./
         with:
           issueBody: "### Region proof of concept being driven from\n\nAMER-Enterprise-Central\n\n### Sales"
           fileURI: ".github/workflows/example-inputs/file.yml"
-      - name: See Results
+      - name: Test to see if it works (canada)
+        id: test-canada
+        uses: ./
+        with:
+          issueBody: "### Region proof of concept being driven from\n\nAMER-Canada\n\n### Sales"
+          fileURI: ".github/workflows/example-inputs/file.yml"
+      - name: See Results (Central)
         run: |
-          echo ${{ steps.test.outputs.labelOfRegionToAssignToIssue }}
-          echo ${{ steps.test.outputs.githubHandlesOfPeopleToBeNotified }}
+          echo ${{ steps.test-central.outputs.labelOfRegionToAssignToIssue }}
+          echo ${{ steps.test-central.outputs.githubHandlesOfPeopleToBeNotified }}
+          echo ${{ steps.test-central.outputs.override }}
+          echo ${{ steps.test-central.outputs.singleASE }}
+      - name: See Results (Canada)
+        run: |
+          echo ${{ steps.test-canada.outputs.labelOfRegionToAssignToIssue }}
+          echo ${{ steps.test-canada.outputs.githubHandlesOfPeopleToBeNotified }}
+          echo ${{ steps.test-canada.outputs.override }}
+          echo ${{ steps.test-canada.outputs.singleASE }}

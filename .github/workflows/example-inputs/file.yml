@@ -1,10 +1,12 @@
 - salesforceName: "AMER-Canada"
   label: "region-canada"
   approvers:
-    - "@nickliffen"
-    - "@nickliffen"
+    - "@nickliffen" # This person gets notified with extention requests, when override is set to true, so ensure the first person is the actual ASE in the region.
+    - "@nickliffenOne"
+  override: false
 - salesforceName: "AMER-Enterprise-Central"
   label: "region-central"
   approvers:
-    - "@nickliffen"
-    - "@nickliffen"
+    - "@niro" # This person gets notified with extention requests, when override is set to true, so ensure the first person is the actual ASE in the region.
+    - "@niroTwo"
+  override: true

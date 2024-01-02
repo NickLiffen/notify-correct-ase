@@ -16,14 +16,14 @@ jobs:
         id: test-central
         uses: ./
         with:
-          issueBody: "### Region proof of concept being driven from\n\nAMER-Enterprise-Central\n\n### Sales"
-          fileURI: ".github/workflows/example-inputs/file.yml"
+          issueBody: '{"region":"AMER-Enterprise-Central"}' 
+          fileURI: .github/workflows/example-inputs/file.yml
       - name: Test to see if it works (canada)
         id: test-canada
         uses: ./
         with:
-          issueBody: "### Region proof of concept being driven from\n\nAMER-Canada\n\n### Sales"
-          fileURI: ".github/workflows/example-inputs/file.yml"
+          issueBody: '{"region":"AMER-Canada"}'
+          fileURI: .github/workflows/example-inputs/file.yml
       - name: See Results (Central)
         run: |
           echo ${{ steps.test-central.outputs.labelOfRegionToAssignToIssue }}
@@ -36,3 +36,4 @@ jobs:
           echo ${{ steps.test-canada.outputs.githubHandlesOfPeopleToBeNotified }}
           echo ${{ steps.test-canada.outputs.override }}
           echo ${{ steps.test-canada.outputs.singleASE }}
+

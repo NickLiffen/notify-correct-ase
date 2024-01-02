@@ -16,14 +16,14 @@ jobs:
         id: test-central
         uses: ./
         with:
-          issueBody: "{"region":"AMER-Enterprise-Central"}" 
-          fileURI: ".github/workflows/example-inputs/file.yml"
+          issueBody: '{"region":"AMER-Enterprise-Central"}' 
+          fileURI: .github/workflows/example-inputs/file.yml
       - name: Test to see if it works (canada)
         id: test-canada
         uses: ./
         with:
-          issueBody: "{"region":"AMER-Canada"}"
-          fileURI: ".github/workflows/example-inputs/file.yml"
+          issueBody: '{"region":"AMER-Canada"}'
+          fileURI: .github/workflows/example-inputs/file.yml
       - name: See Results (Central)
         run: |
           echo ${{ steps.test-central.outputs.labelOfRegionToAssignToIssue }}
